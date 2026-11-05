@@ -1,7 +1,8 @@
 /**
  * RANGREZ — Contemporary Indian Luxury Fashion
- * Complete client-side application with interactive shopping cart, wishlist,
- * filter & search, quick-view modal, checkout simulation, and toast notifications.
+ * Complete client-side application with dedicated Product Details Pages (PDP),
+ * interactive shopping bag, wishlist, filtering, sorting, live search,
+ * and seamless hash-based routing.
  */
 
 // ============================================================================
@@ -18,6 +19,7 @@ const STORE_DATA = {
       {
         id: 'w-1',
         name: 'Kalamkari Bloom Hand-Block Kurta Set',
+        category: 'women',
         type: 'Kurtas',
         price: 2490,
         origPrice: 3490,
@@ -32,6 +34,7 @@ const STORE_DATA = {
       {
         id: 'w-2',
         name: 'Indigo Ease Handwoven Silk Co-ord',
+        category: 'women',
         type: 'Co-ords',
         price: 3290,
         origPrice: 4290,
@@ -46,6 +49,7 @@ const STORE_DATA = {
       {
         id: 'w-3',
         name: 'Saffron Story Chanderi Silk Saree',
+        category: 'women',
         type: 'Sarees',
         price: 3890,
         origPrice: 5200,
@@ -60,6 +64,7 @@ const STORE_DATA = {
       {
         id: 'w-4',
         name: 'Mogra Tiered Gathered Cotton Dress',
+        category: 'women',
         type: 'Dresses',
         price: 2790,
         origPrice: 3590,
@@ -74,6 +79,7 @@ const STORE_DATA = {
       {
         id: 'w-5',
         name: 'Rani Garden Banarasi Festive Kurta',
+        category: 'women',
         type: 'Kurtas',
         price: 2690,
         origPrice: 3790,
@@ -88,6 +94,7 @@ const STORE_DATA = {
       {
         id: 'w-6',
         name: 'Aaina Hand-Painted Cotton Saree',
+        category: 'women',
         type: 'Sarees',
         price: 3490,
         origPrice: 4500,
@@ -102,6 +109,7 @@ const STORE_DATA = {
       {
         id: 'w-7',
         name: 'Gulabi Weekend Linen Wrap Set',
+        category: 'women',
         type: 'Co-ords',
         price: 2990,
         origPrice: 3890,
@@ -116,6 +124,7 @@ const STORE_DATA = {
       {
         id: 'w-8',
         name: 'Nila Angrakha Tiered Maxi Dress',
+        category: 'women',
         type: 'Dresses',
         price: 2590,
         origPrice: 3490,
@@ -139,6 +148,7 @@ const STORE_DATA = {
       {
         id: 'm-1',
         name: 'Sundown Raw Linen Kurta Shirt',
+        category: 'men',
         type: 'Shirts',
         price: 1890,
         origPrice: 2690,
@@ -153,6 +163,7 @@ const STORE_DATA = {
       {
         id: 'm-2',
         name: 'Indigo Path Handwoven Long Kurta',
+        category: 'men',
         type: 'Kurtas',
         price: 2290,
         origPrice: 3190,
@@ -167,6 +178,7 @@ const STORE_DATA = {
       {
         id: 'm-3',
         name: 'Marigold Raw Silk Nehru Jacket',
+        category: 'men',
         type: 'Jackets',
         price: 3490,
         origPrice: 4890,
@@ -181,6 +193,7 @@ const STORE_DATA = {
       {
         id: 'm-4',
         name: 'Everyday Relaxed Organic Cotton Trouser',
+        category: 'men',
         type: 'Trousers',
         price: 1990,
         origPrice: 2790,
@@ -195,6 +208,7 @@ const STORE_DATA = {
       {
         id: 'm-5',
         name: 'Monsoon Check Khadi Over-Shirt',
+        category: 'men',
         type: 'Shirts',
         price: 2090,
         origPrice: 2890,
@@ -209,6 +223,7 @@ const STORE_DATA = {
       {
         id: 'm-6',
         name: 'Mitti Textured Short Kurta',
+        category: 'men',
         type: 'Kurtas',
         price: 2590,
         origPrice: 3490,
@@ -223,6 +238,7 @@ const STORE_DATA = {
       {
         id: 'm-7',
         name: 'Raat Heritage Midnight Bandhgala',
+        category: 'men',
         type: 'Jackets',
         price: 4890,
         origPrice: 6500,
@@ -237,6 +253,7 @@ const STORE_DATA = {
       {
         id: 'm-8',
         name: 'Easy Tapered Pleated Chino Trouser',
+        category: 'men',
         type: 'Trousers',
         price: 2190,
         origPrice: 2990,
@@ -260,6 +277,7 @@ const STORE_DATA = {
       {
         id: 'k-1',
         name: 'Mini Mehfil Festive Kurta & Dhoti Set',
+        category: 'kids',
         type: 'Boys',
         price: 1790,
         origPrice: 2490,
@@ -274,6 +292,7 @@ const STORE_DATA = {
       {
         id: 'k-2',
         name: 'Little Lotus Chanderi Lehenga Set',
+        category: 'kids',
         type: 'Girls',
         price: 2190,
         origPrice: 2990,
@@ -288,6 +307,7 @@ const STORE_DATA = {
       {
         id: 'k-3',
         name: 'Pocketful of Sunshine Dhoti Kurta',
+        category: 'kids',
         type: 'Boys',
         price: 1490,
         origPrice: 1990,
@@ -302,6 +322,7 @@ const STORE_DATA = {
       {
         id: 'k-4',
         name: 'Playful Handblock Floral Co-ord',
+        category: 'kids',
         type: 'Sets',
         price: 1690,
         origPrice: 2290,
@@ -316,6 +337,7 @@ const STORE_DATA = {
       {
         id: 'k-5',
         name: 'Mango Zari Boy Festive Kurta',
+        category: 'kids',
         type: 'Boys',
         price: 1590,
         origPrice: 2190,
@@ -330,6 +352,7 @@ const STORE_DATA = {
       {
         id: 'k-6',
         name: 'Phoolon Ki Pari Anarkali Dress',
+        category: 'kids',
         type: 'Girls',
         price: 1990,
         origPrice: 2690,
@@ -344,6 +367,7 @@ const STORE_DATA = {
       {
         id: 'k-7',
         name: 'Little Star Embroidered Waistcoat',
+        category: 'kids',
         type: 'Festive',
         price: 2290,
         origPrice: 3190,
@@ -358,6 +382,7 @@ const STORE_DATA = {
       {
         id: 'k-8',
         name: 'Sunday Handblock Playful Pajama Set',
+        category: 'kids',
         type: 'Sets',
         price: 1390,
         origPrice: 1890,
@@ -390,8 +415,8 @@ let state = {
   filterType: 'All',
   sortBy: 'featured',
   activeSlide: 0,
-  quickViewItem: null,
-  selectedSize: 'M',
+  pdpSize: 'M',
+  pdpQty: 1,
   isCartOpen: false,
   isWishlistOpen: false,
   isSearchOpen: false,
@@ -546,24 +571,13 @@ function toggleWishlist(productId) {
   }
   saveWishlist();
   updateHeaderBadges();
-  // Update heart buttons visually without full re-render
   document.querySelectorAll(`.btn-wishlist[data-id="${productId}"]`).forEach(btn => {
     btn.classList.toggle('active', state.wishlist.includes(productId));
   });
-}
-
-function openQuickView(productId) {
-  const product = ALL_PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
-  state.quickViewItem = product;
-  state.selectedSize = 'M';
-  renderQuickViewModal();
-}
-
-function closeQuickView() {
-  state.quickViewItem = null;
-  const modal = document.querySelector('#quickview-modal-overlay');
-  if (modal) modal.classList.remove('open');
+  const pdpWishBtn = document.querySelector('.pdp-btn-wishlist');
+  if (pdpWishBtn) {
+    pdpWishBtn.classList.toggle('active', state.wishlist.includes(productId));
+  }
 }
 
 function toggleCart(force) {
@@ -625,7 +639,7 @@ function closeCheckout() {
 }
 
 // ============================================================================
-// UI RENDERING - CARDS & SECTIONS
+// UI RENDERING - PRODUCT CARDS
 // ============================================================================
 function renderProductCard(p) {
   const isWishlisted = state.wishlist.includes(p.id);
@@ -635,7 +649,7 @@ function renderProductCard(p) {
 
   return `
     <article class="product-card" data-id="${p.id}">
-      <div class="product-media" onclick="window.rangrez.openQuickView('${p.id}')">
+      <div class="product-media" onclick="location.hash='#product/${p.id}'">
         <img src="${p.img}" alt="${p.name}" loading="lazy" />
         <div class="product-badges">${badgeHtml}</div>
         <button class="btn-wishlist ${isWishlisted ? 'active' : ''}" data-id="${p.id}" onclick="event.stopPropagation(); window.rangrez.toggleWishlist('${p.id}')" title="Save to wishlist">
@@ -644,8 +658,8 @@ function renderProductCard(p) {
           </svg>
         </button>
         <div class="product-quick-actions" onclick="event.stopPropagation()">
-          <button class="btn-quick-view" onclick="window.rangrez.openQuickView('${p.id}')">
-            Quick View
+          <button class="btn-quick-view" onclick="location.hash='#product/${p.id}'">
+            View Product
           </button>
           <button class="btn-quick-add" onclick="window.rangrez.addToCart('${p.id}', 'M', 1)">
             + Quick Bag
@@ -654,7 +668,7 @@ function renderProductCard(p) {
       </div>
       <div class="product-details">
         <span class="product-type">${p.type}</span>
-        <h4 class="product-name" onclick="window.rangrez.openQuickView('${p.id}')">${p.name}</h4>
+        <h4 class="product-name" onclick="location.hash='#product/${p.id}'">${p.name}</h4>
         <div class="product-rating">
           <span class="stars">★★★★★</span>
           <span>${p.rating} (${p.reviews})</span>
@@ -669,6 +683,9 @@ function renderProductCard(p) {
   `;
 }
 
+// ============================================================================
+// SHELL (HEADER, TICKER, FOOTER, DRAWERS)
+// ============================================================================
 function renderShell(contentHtml) {
   const app = document.querySelector('#app');
   app.innerHTML = `
@@ -890,16 +907,6 @@ function renderShell(contentHtml) {
       </div>
     </aside>
 
-    <!-- QUICK-VIEW MODAL OVERLAY -->
-    <div class="modal-overlay" id="quickview-modal-overlay" onclick="window.rangrez.closeQuickView()">
-      <div class="quickview-modal" onclick="event.stopPropagation()">
-        <button class="quickview-close" onclick="window.rangrez.closeQuickView()">✕</button>
-        <div id="quickview-modal-content" style="display: contents;">
-          <!-- Filled by renderQuickViewModal() -->
-        </div>
-      </div>
-    </div>
-
     <!-- SEARCH OVERLAY MODAL -->
     <div class="modal-overlay" id="search-modal-overlay" onclick="window.rangrez.toggleSearch(false)">
       <div class="search-modal" onclick="event.stopPropagation()">
@@ -942,6 +949,159 @@ function renderShell(contentHtml) {
 }
 
 // ============================================================================
+// DEDICATED PRODUCT DETAILS PAGE (PDP)
+// ============================================================================
+function renderProductPageView(productId) {
+  state.currentRoute = `product/${productId}`;
+  const product = ALL_PRODUCTS.find(p => p.id === productId);
+
+  if (!product) {
+    location.hash = '#home';
+    return;
+  }
+
+  const categoryName = STORE_DATA[product.category] ? STORE_DATA[product.category].name : 'Collection';
+  const isWishlisted = state.wishlist.includes(product.id);
+  state.pdpSize = 'M';
+  state.pdpQty = 1;
+
+  // Curate 4 related pieces from same category
+  const relatedItems = (STORE_DATA[product.category] ? STORE_DATA[product.category].items : ALL_PRODUCTS)
+    .filter(p => p.id !== product.id)
+    .slice(0, 4);
+
+  const pdpHtml = `
+    <div class="pdp-wrapper">
+      <!-- BREADCRUMB -->
+      <nav class="pdp-breadcrumb">
+        <a href="#home">Home</a> /
+        <a href="#${product.category}">${categoryName}</a> /
+        <span>${product.type}</span> /
+        <span>${product.name}</span>
+      </nav>
+
+      <!-- MAIN PRODUCT GRID -->
+      <div class="pdp-grid">
+        <!-- LEFT: GALLERY -->
+        <div class="pdp-gallery">
+          <div class="pdp-image-stage">
+            <img src="${product.img}" alt="${product.name}" id="pdp-main-image" />
+            <div class="pdp-badges">
+              ${product.tag ? `<span class="badge-tag ${product.tagType || ''}">${product.tag}</span>` : ''}
+              <span class="badge-tag lime">HANDLOOM</span>
+            </div>
+          </div>
+          <div style="margin-top: 16px; display: flex; gap: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-secondary);">
+            <span>✦ Master Artisan Loom</span>
+            <span>✦ 100% Sustainable Natural Fibre</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: PRODUCT INFO & PURCHASE -->
+        <div class="pdp-info">
+          <span class="pdp-eyebrow">RANGREZ / ${categoryName.toUpperCase()} / ${product.type.toUpperCase()}</span>
+          <h1 class="pdp-title">${product.name}</h1>
+
+          <div class="pdp-rating-strip">
+            <span class="stars">★★★★★</span>
+            <span style="font-weight: 600;">${product.rating} / 5.0</span>
+            <span style="color: var(--ink-muted);">(${product.reviews} verified client reviews)</span>
+          </div>
+
+          <div class="pdp-pricing-box">
+            <span class="pdp-price-now">${formatPrice(product.price)}</span>
+            <span class="pdp-price-orig">${formatPrice(product.origPrice)}</span>
+            <span class="pdp-discount-badge">${Math.round((1 - product.price / product.origPrice) * 100)}% OFF</span>
+          </div>
+          <p class="pdp-tax-note">Inclusive of all local taxes. Free express shipping applied at bag.</p>
+
+          <p class="pdp-description">${product.desc}</p>
+
+          <!-- SIZE SELECTION -->
+          <div class="pdp-section-label">
+            <span>Select Size</span>
+            <span style="color: var(--rust); cursor: pointer;" onclick="window.rangrez.showToast('True to standard tailored sizing. Model is 6\\'1 wearing M.')">Size Chart ↗</span>
+          </div>
+          <div class="pdp-size-options">
+            ${['XS', 'S', 'M', 'L', 'XL'].map(sz => `
+              <button class="pdp-size-btn ${state.pdpSize === sz ? 'active' : ''}" onclick="window.rangrez.setPdpSize('${sz}')">
+                ${sz}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- ACTIONS: QTY, ADD TO BAG & WISHLIST -->
+          <div class="pdp-action-bar">
+            <div class="pdp-qty-picker">
+              <button onclick="window.rangrez.changePdpQty(-1)">−</button>
+              <span id="pdp-qty-val">${state.pdpQty}</span>
+              <button onclick="window.rangrez.changePdpQty(1)">+</button>
+            </div>
+            <button class="pdp-btn-add" onclick="window.rangrez.addCurrentPdpToCart('${product.id}')">
+              <span>Add to Bag</span>
+              <span>·</span>
+              <span id="pdp-add-price">${formatPrice(product.price * state.pdpQty)}</span>
+            </button>
+            <button class="pdp-btn-wishlist ${isWishlisted ? 'active' : ''}" onclick="window.rangrez.toggleWishlist('${product.id}')" title="Save to wishlist">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- PINCODE CHECKER -->
+          <div class="pdp-pincode-box">
+            <label>Check Delivery & Availability</label>
+            <div class="pdp-pincode-form">
+              <input type="text" id="pdp-pincode-input" placeholder="Enter 6-digit Pincode (e.g. 110001)" maxlength="6" />
+              <button type="button" onclick="window.rangrez.checkPincode()">CHECK</button>
+            </div>
+            <div class="pdp-pincode-result" id="pdp-pincode-result"></div>
+          </div>
+
+          <!-- SPECIFICATIONS & WEAVE HIGHLIGHTS -->
+          <div class="pdp-spec-table">
+            <div class="pdp-spec-row">
+              <span>FABRIC</span>
+              <span>${product.fabric}</span>
+            </div>
+            <div class="pdp-spec-row">
+              <span>WEAVE ORIGIN</span>
+              <span>Handloom cluster, Jaipur / Madhya Pradesh</span>
+            </div>
+            <div class="pdp-spec-row">
+              <span>WASH CARE</span>
+              <span>Gentle cold hand wash or eco-friendly dry clean</span>
+            </div>
+            <div class="pdp-spec-row">
+              <span>RETURNS</span>
+              <span>15-Day hassle-free doorstep return & exchange</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOMMENDATIONS -->
+      <section class="section-wrapper" style="padding-top: 90px; padding-bottom: 0;">
+        <div class="section-header">
+          <div>
+            <p class="section-eyebrow">COMPLETE THE LOOK</p>
+            <h2 class="section-title">You may also <em>cherish.</em></h2>
+          </div>
+          <a href="#${product.category}" class="link-arrow">View All ${categoryName} ↗</a>
+        </div>
+        <div class="product-grid">
+          ${relatedItems.map(renderProductCard).join('')}
+        </div>
+      </section>
+    </div>
+  `;
+
+  renderShell(pdpHtml);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============================================================================
 // CART DRAWER RENDER
 // ============================================================================
 function renderCartDrawer() {
@@ -973,11 +1133,11 @@ function renderCartDrawer() {
 
   const itemsHtml = state.cart.map(item => `
     <div class="cart-item">
-      <div class="cart-item-img">
+      <div class="cart-item-img" onclick="window.rangrez.toggleCart(false); location.hash='#product/${item.id}'">
         <img src="${item.img}" alt="${item.name}" />
       </div>
       <div class="cart-item-info">
-        <h5 class="cart-item-title">${item.name}</h5>
+        <h5 class="cart-item-title" onclick="window.rangrez.toggleCart(false); location.hash='#product/${item.id}'">${item.name}</h5>
         <span class="cart-item-meta">Size: ${item.size} · ${item.fabric ? item.fabric.split(' ')[0] : 'Handloom'}</span>
         <div class="cart-item-bottom">
           <div class="cart-qty-ctrl">
@@ -1072,11 +1232,11 @@ function renderWishlistDrawer() {
     <div class="cart-items">
       ${wishlistedItems.map(item => `
         <div class="cart-item">
-          <div class="cart-item-img">
+          <div class="cart-item-img" onclick="window.rangrez.toggleWishlistDrawer(false); location.hash='#product/${item.id}'">
             <img src="${item.img}" alt="${item.name}" />
           </div>
           <div class="cart-item-info">
-            <h5 class="cart-item-title">${item.name}</h5>
+            <h5 class="cart-item-title" onclick="window.rangrez.toggleWishlistDrawer(false); location.hash='#product/${item.id}'">${item.name}</h5>
             <span class="cart-item-meta">${item.type} · ${formatPrice(item.price)}</span>
             <div style="margin-top: 10px; display: flex; gap: 8px;">
               <button class="btn-quick-add" style="padding: 6px 12px; font-size: 10px;" onclick="window.rangrez.addToCart('${item.id}', 'M', 1)">
@@ -1089,78 +1249,6 @@ function renderWishlistDrawer() {
       `).join('')}
     </div>
   `;
-}
-
-// ============================================================================
-// QUICK-VIEW MODAL RENDER
-// ============================================================================
-function renderQuickViewModal() {
-  const p = state.quickViewItem;
-  const overlay = document.querySelector('#quickview-modal-overlay');
-  const container = document.querySelector('#quickview-modal-content');
-  if (!p || !overlay || !container) return;
-
-  const isWishlisted = state.wishlist.includes(p.id);
-
-  container.innerHTML = `
-    <div class="quickview-media">
-      <img src="${p.img}" alt="${p.name}" />
-    </div>
-    <div class="quickview-body">
-      <span class="modal-eyebrow">RANGREZ / ${p.type}</span>
-      <h3 class="modal-title">${p.name}</h3>
-      <div class="product-rating" style="margin-bottom: 14px;">
-        <span class="stars">★★★★★</span>
-        <span>${p.rating} / 5.0 (${p.reviews} verified reviews)</span>
-      </div>
-      <div class="modal-pricing">
-        <span class="modal-price">${formatPrice(p.price)}</span>
-        <span class="modal-price-orig">${formatPrice(p.origPrice)}</span>
-        <span class="price-off">${Math.round((1 - p.price / p.origPrice) * 100)}% OFF</span>
-      </div>
-      <p class="modal-desc">${p.desc}</p>
-
-      <div class="size-select-label">
-        <span>Select Size</span>
-        <span onclick="window.rangrez.showToast('True to size. Model is wearing size M.')">Size Guide ?</span>
-      </div>
-      <div class="size-pills">
-        ${['XS', 'S', 'M', 'L', 'XL'].map(sz => `
-          <button class="size-pill ${state.selectedSize === sz ? 'active' : ''}" onclick="window.rangrez.selectSize('${sz}')">
-            ${sz}
-          </button>
-        `).join('')}
-      </div>
-
-      <div class="modal-details-list">
-        <div class="modal-details-row">
-          <span>FABRIC COMPOSITION</span>
-          <span>${p.fabric}</span>
-        </div>
-        <div class="modal-details-row">
-          <span>CARE</span>
-          <span>Dry Clean or Gentle Cold Wash</span>
-        </div>
-        <div class="modal-details-row">
-          <span>ORIGIN</span>
-          <span>Woven in India</span>
-        </div>
-      </div>
-
-      <div class="modal-actions">
-        <button class="btn-primary" style="flex: 2;" onclick="window.rangrez.addToCart('${p.id}', '${state.selectedSize}', 1); window.rangrez.closeQuickView();">
-          Add to Bag · ${formatPrice(p.price)}
-        </button>
-        <button class="action-btn" style="border: 1px solid var(--line-strong); width: 48px; height: 48px; border-radius: 4px;" onclick="window.rangrez.toggleWishlist('${p.id}')" title="Save to wishlist">
-          <svg viewBox="0 0 24 24" fill="${isWishlisted ? '#e53935' : 'none'}" stroke="${isWishlisted ? '#e53935' : 'currentColor'}">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  `;
-
-  overlay.classList.add('open');
 }
 
 // ============================================================================
@@ -1229,7 +1317,6 @@ function renderCheckoutModal() {
 // HOME VIEW
 function renderHomeView() {
   state.currentRoute = 'home';
-  const slide = HERO_SLIDES[state.activeSlide];
 
   const categoriesHtml = Object.entries(STORE_DATA).map(([key, cat], idx) => `
     <a href="#${key}" class="category-tile">
@@ -1247,11 +1334,11 @@ function renderHomeView() {
     STORE_DATA.women.items[0],
     STORE_DATA.women.items[1],
     STORE_DATA.men.items[0],
-    STORE_DATA.men.items[2],
+    STORE_DATA.men.items[1],
     STORE_DATA.women.items[2],
     STORE_DATA.kids.items[0],
     STORE_DATA.kids.items[1],
-    STORE_DATA.men.items[1]
+    STORE_DATA.men.items[2]
   ];
 
   const homeHtml = `
@@ -1484,12 +1571,19 @@ function renderStoryView() {
 // ROUTING
 // ============================================================================
 function route() {
-  const hash = location.hash.replace('#', '').trim();
+  const rawHash = location.hash.replace('#', '').trim();
+  
+  if (rawHash.startsWith('product/')) {
+    const productId = rawHash.split('/')[1];
+    renderProductPageView(productId);
+    return;
+  }
+
   state.filterType = 'All'; // reset sub-filter on route switch
   
-  if (hash === 'women' || hash === 'men' || hash === 'kids') {
-    renderCollectionView(hash);
-  } else if (hash === 'story') {
+  if (rawHash === 'women' || rawHash === 'men' || rawHash === 'kids') {
+    renderCollectionView(rawHash);
+  } else if (rawHash === 'story') {
     renderStoryView();
   } else {
     renderHomeView();
@@ -1509,7 +1603,7 @@ function updateHeaderBadges() {
 }
 
 // Hero slider timer
-let heroInterval = setInterval(() => {
+setInterval(() => {
   if (state.currentRoute === 'home') {
     state.activeSlide = (state.activeSlide + 1) % HERO_SLIDES.length;
     const slides = document.querySelectorAll('.hero-slide');
@@ -1527,8 +1621,6 @@ window.rangrez = {
   removeFromCart,
   updateCartQty,
   toggleWishlist,
-  openQuickView,
-  closeQuickView,
   toggleCart,
   toggleWishlistDrawer,
   toggleSearch,
@@ -1536,6 +1628,42 @@ window.rangrez = {
   openCheckout,
   closeCheckout,
   showToast,
+  setPdpSize: (sz) => {
+    state.pdpSize = sz;
+    document.querySelectorAll('.pdp-size-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === sz);
+    });
+  },
+  changePdpQty: (delta) => {
+    state.pdpQty = Math.max(1, state.pdpQty + delta);
+    const qtySpan = document.querySelector('#pdp-qty-val');
+    if (qtySpan) qtySpan.textContent = state.pdpQty;
+    const rawHash = location.hash.replace('#', '').trim();
+    if (rawHash.startsWith('product/')) {
+      const p = ALL_PRODUCTS.find(x => x.id === rawHash.split('/')[1]);
+      if (p) {
+        const priceSpan = document.querySelector('#pdp-add-price');
+        if (priceSpan) priceSpan.textContent = formatPrice(p.price * state.pdpQty);
+      }
+    }
+  },
+  addCurrentPdpToCart: (productId) => {
+    addToCart(productId, state.pdpSize, state.pdpQty);
+    toggleCart(true); // smoothly open shopping bag
+  },
+  checkPincode: () => {
+    const input = document.querySelector('#pdp-pincode-input');
+    const result = document.querySelector('#pdp-pincode-result');
+    if (!input || !result) return;
+    const val = input.value.trim();
+    if (/^\d{6}$/.test(val)) {
+      result.style.color = '#15803d';
+      result.textContent = `✓ Available for PIN ${val} — Expected delivery in 2-4 business days. Free shipping eligible.`;
+    } else {
+      result.style.color = '#b91c1c';
+      result.textContent = 'Please enter a valid 6-digit Indian PIN code.';
+    }
+  },
   setSlide: (idx) => {
     state.activeSlide = idx;
     const slides = document.querySelectorAll('.hero-slide');
@@ -1556,12 +1684,6 @@ window.rangrez = {
   setSortOrder: (order) => {
     state.sortBy = order;
     renderCollectionView(state.currentRoute);
-  },
-  selectSize: (sz) => {
-    state.selectedSize = sz;
-    document.querySelectorAll('.size-pill').forEach(p => {
-      p.classList.toggle('active', p.textContent.trim() === sz);
-    });
   },
   applyCoupon: () => {
     const input = document.querySelector('#coupon-code-input');
@@ -1605,7 +1727,7 @@ window.rangrez = {
     }
 
     list.innerHTML = matches.map(p => `
-      <div class="search-result-row" onclick="window.rangrez.toggleSearch(false); window.rangrez.openQuickView('${p.id}')">
+      <div class="search-result-row" onclick="window.rangrez.toggleSearch(false); location.hash='#product/${p.id}';">
         <img src="${p.img}" alt="${p.name}" />
         <div>
           <div style="font-size: 13.5px; font-weight: 600;">${p.name}</div>
